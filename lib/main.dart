@@ -15,9 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Contact App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       initialRoute: '/',
       routes: {
         '/': (context) => const MyContact(),
@@ -46,6 +43,7 @@ class _MyContactState extends State<MyContact> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contact'),
+        // backgroundColor: Color(0xFF2C96F1),
       ),
       body: contactData.isEmpty
           ? const EmptyContact()
@@ -55,14 +53,19 @@ class _MyContactState extends State<MyContact> {
                 final contact = contactData.elementAt(index);
                 return Container(
                   margin: const EdgeInsets.only(top: 5, left: 10, right: 10),
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.8),
-                      spreadRadius: 0.5,
-                      blurRadius: 5,
-                      offset: const Offset(0, 0),
-                    )
-                  ], borderRadius: const BorderRadius.all(Radius.circular(5))),
+                  decoration: const BoxDecoration(
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.8),
+                    //     spreadRadius: 0.5,
+                    //     blurRadius: 5,
+                    //     offset: const Offset(0, 0),
+                    //   )
+                    // ],
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
                   child: Card(
                     child: ListTile(
                       leading: CircleAvatar(
@@ -113,8 +116,8 @@ class _MyContactState extends State<MyContact> {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: SizedBox(
-                                height: 220,
-                                width: 220,
+                                height: 240,
+                                width: double.infinity,
                                 child: Column(
                                   children: [
                                     Container(
@@ -157,12 +160,17 @@ class _MyContactState extends State<MyContact> {
                                     ),
                                     const SizedBox(height: 20),
                                     SizedBox(
-                                      height: 20,
-                                      width: 100,
+                                      height: 30,
+                                      width: double.infinity,
                                       child: ElevatedButton(
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              const Color(0xFF2C96F1),
+                                          foregroundColor: Colors.white,
+                                        ),
                                         child: const Text('Close'),
                                       ),
                                     ),
